@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class Controller {
     private Raamatukogu Raamatukogu;
     @Autowired
@@ -19,7 +20,7 @@ public class Controller {
     @RequestMapping(value = "/{loaded}", method = RequestMethod.GET)
     public List<Raamat> paginate(@PathVariable long loaded){
         int limit = 3;
-        return Raamatukogu.getRaamatsByIdBetween(loaded, loaded+limit);
+        return Raamatukogu.getRaamatsIdBetween(loaded, loaded+limit);
     }
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public void create(@RequestBody Raamat postedRaamat){
