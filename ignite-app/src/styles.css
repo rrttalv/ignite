@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'roboto';
+}
+.container{
+    margin-top: 2rem;
+}
+.margin-b{
+    margin-bottom: 1rem;
+}
+.margin-t{
+    margin-top: 1rem;
+}
+.border-btm{
+    border-bottom: 1px solid rgba(0,0,0,0.075);
+    padding: 0.5rem 0;
+}
+.border-all{
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.italic{
+    font-style: italic;
+}
+.bold{
+    font-weight: 700;
+}
+.flex-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

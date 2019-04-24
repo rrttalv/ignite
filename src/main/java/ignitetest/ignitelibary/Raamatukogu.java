@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface Raamatukogu extends JpaRepository<Raamat, Long>{
-    List<Raamat> getRaamatsIdBetween(Long start, Long fin);
+    List<Raamat> getRaamatsByIdBetween(Long start, Long fin);
 }

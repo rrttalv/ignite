@@ -1,3 +1,19 @@
-<p>
-  page works!
-</p>
+<div class="row" *ngIf="Books">
+  <h1 style="width: 100%;" class="border-btm">Raamatukogu <i (click)="displayForm()" style="float:right;" class="icon fas fa-plus"></i></h1>
+  <app-newbook id="new" (sendForm)="submitForm($event)" (cancel)="hideForm()"></app-newbook>
+  <div class="col-md-12 data border-all" *ngFor="let book of Books">
+    <div class="row">
+      <div class="col-sm-8">
+          <h4 class="italic">{{book.pealkiri}}</h4>
+          <p class="italic">Autor - {{book.autor}}</p>
+          <p class="bold margin-t">Viide - {{book.innerId}}</p>
+      </div>
+      <div class="col-sm-4 flex-col">
+          <i class="far fa-comment icon"></i>
+          <i class="fas fa-pen icon"></i>
+      </div>
+    </div>
+  </div>
+  <app-nav style="width: 100%;" [HasPrev]="checkPrev()" (more)="getMore($event)" (loadPrevious)="getPrev($event)"></app-nav>
+</div>
+<app-loading *ngIf="!Books"></app-loading>

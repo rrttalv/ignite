@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:4200")
 public class Controller {
     private Raamatukogu Raamatukogu;
     @Autowired
@@ -17,14 +17,16 @@ public class Controller {
         this.Raamatukogu = raamatukogu;
     }
 
-    @RequestMapping(value = "/{loaded}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{loaded}", method = RequestMethod.GET,  produces={"application/json"})
     public List<Raamat> paginate(@PathVariable long loaded){
         int limit = 3;
-        return Raamatukogu.getRaamatsIdBetween(loaded, loaded+limit);
+        return Raamatukogu.getRaamatsByIdBetween(loaded, loaded+limit);
     }
     @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public void create(@RequestBody Raamat postedRaamat){
+    public List<Raamat> create(@RequestBody Raamat postedRaamat){
+        System.out.println(postedRaamat);
         Raamatukogu.save(postedRaamat);
+        return Raamatukogu.getRaamatsByIdBetween(Raamatukogu.count()-3, Raamatukogu.count()+1);
     }
 }
 

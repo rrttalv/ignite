@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 import { DataService } from './services/data.service';
@@ -10,6 +12,8 @@ import { AppComponent } from './app.component';
 import { TableComponent } from './components/table/table.component';
 import { PageComponent } from './components/page/page.component';
 import { NavComponent } from './components/nav/nav.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { NewbookComponent } from './components/newbook/newbook.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +21,16 @@ import { NavComponent } from './components/nav/nav.component';
     TableComponent,
     PageComponent,
     NavComponent,
-    HttpClientModule
+    LoadingComponent,
+    NewbookComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -1,0 +1,23 @@
+.icon{
+    font-size: 2rem;
+    flex: 1.5 0 0;
+    text-align: center;
+}
+.far{
+    color: #4bb3ff;
+}
+.fas{
+    color: #20c997;
+}
+.icon:hover{
+    cursor: pointer;
+}
+.data{
+    padding: 1.5rem 1rem;
+}
+.data:hover{
+    background: #f9f9f9;
+}
+#new{
+    display: none;
+}

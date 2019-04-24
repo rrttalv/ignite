@@ -1,0 +1,19 @@
+#nav{
+    width: 100%;
+    text-align: center;
+    background: #333;
+    margin-top: 2rem;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.nav-div:hover{
+    cursor: pointer;
+    background: #3e3e3e;
+    border-radius: 10px;
+}
+.nav-div{
+    padding: 1rem;
+    flex: 1 0 0;
+}
