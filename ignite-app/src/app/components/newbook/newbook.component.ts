@@ -9,7 +9,7 @@ export class NewbookComponent implements OnInit {
   bookForm = new FormGroup({
     pealkiri: new FormControl('', Validators.required),
     autor: new FormControl('', Validators.required)
-  })
+  });
   @Output() sendForm: EventEmitter<FormGroup> = new EventEmitter();
   @Output() cancel: EventEmitter<Boolean> = new EventEmitter();
   constructor() { }

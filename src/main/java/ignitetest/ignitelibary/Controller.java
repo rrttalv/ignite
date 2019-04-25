@@ -24,9 +24,16 @@ public class Controller {
     }
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public List<Raamat> create(@RequestBody Raamat postedRaamat){
-        System.out.println(postedRaamat);
         Raamatukogu.save(postedRaamat);
         return Raamatukogu.getRaamatsByIdBetween(Raamatukogu.count()-3, Raamatukogu.count()+1);
+    }
+    @RequestMapping(value = "/edit/{bookid}", method = RequestMethod.PUT, consumes = {"application/json"})
+    public Raamat update(@PathVariable long bookid, @RequestBody Raamat editedRaamat){
+        Raamat toEdit = Raamatukogu.findById(bookid);
+        toEdit.setAutor(editedRaamat.getAutor());
+        toEdit.setPealkiri(editedRaamat.getPealkiri());
+        Raamatukogu.save(toEdit);
+        return toEdit;
     }
 }
 

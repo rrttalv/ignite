@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Inject, ComponentRef, ComponentFactoryResolver, ViewContainerRef} from '@angular/core';
+import {UpdateformComponent} from "../updateform/updateform.component";
 import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { Books } from "../../interfaces/books";
-import { Observable, Subject } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-page',
@@ -10,11 +10,13 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./page.component.css']
 })
 export class PageComponent implements OnInit {
-  Loading: Boolean = true;
+  comp: ComponentRef<UpdateformComponent> = null;
   Books: Books[];
   constructor(
     private router: Router,
-    private bookservice: DataService
+    private bookservice: DataService,
+    private resolver: ComponentFactoryResolver,
+    private location: ViewContainerRef
   ) { }
   //Hetkel ei lisanud mingisugust limitit muutujana. Oleks võimalik asendada hardcoded limit palju inputiga
   ngOnInit() {
@@ -54,6 +56,29 @@ export class PageComponent implements OnInit {
       document.getElementById("new").style.display = "none";
     }
   }
+
+  editBook(title, autor, id){
+    const factory = this.resolver.resolveComponentFactory(UpdateformComponent);
+    const component = this.location.createComponent(factory);
+    component.instance.autor = autor;
+    component.instance.pealkiri = title;
+    component.instance.post.subscribe(data => {
+      this.bookservice.editBook(id, data).subscribe(editedBook => {
+        this.Books.filter(book => {
+          if(book['id'] === editedBook['id']){
+            var index = this.Books.indexOf(book);
+            this.Books[index] = editedBook;
+          }
+        })
+        console.log(this.Books);
+        component.destroy();
+      });
+    })
+    component.instance.close.subscribe(d =>{
+      component.destroy();
+    })
+  }
+
 
   submitForm(FG: FormGroup){
     var body = FG.value;

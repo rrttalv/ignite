@@ -18,4 +18,8 @@ export class DataService {
   postBook(body): Observable<any>{
     return this.http.post("http://localhost:8080/new", body, options).pipe(map(obs => obs));
   }
+
+  editBook(params, body): Observable<any>{
+    return this.http.put("http://localhost:8080/edit/"+params, body, options).pipe(map(obs => obs));
+  }
 }

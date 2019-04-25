@@ -14,6 +14,7 @@ import { PageComponent } from './components/page/page.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { NewbookComponent } from './components/newbook/newbook.component';
+import { UpdateformComponent } from './components/updateform/updateform.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NewbookComponent } from './components/newbook/newbook.component';
     NavComponent,
     LoadingComponent,
     NewbookComponent,
+    UpdateformComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +34,7 @@ import { NewbookComponent } from './components/newbook/newbook.component';
     HttpClientModule,
     BrowserAnimationsModule
   ],
+  entryComponents: [UpdateformComponent],
   providers: [DataService],
   bootstrap: [AppComponent]
 })
