@@ -1,0 +1,16 @@
+<div id="overlay">
+  <form [formGroup]="bookForm">
+    <div class="form-group">
+      <label>Raamatu pealkiri*</label>
+      <input type="text" formControlName="pealkiri" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Raamatu Autor*</label>
+      <input type="text" formControlName="autor" class="form-control">
+    </div>
+    <div>
+      <button (click)="saveBook()" class="btn btn-primary">Salvesta</button>
+      <button (click)="cancel()" class="btn btn-danger">Katkesta</button>
+    </div>
+  </form>
+</div>
